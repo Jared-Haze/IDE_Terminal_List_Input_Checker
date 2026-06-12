@@ -1,2 +1,4 @@
 Next step:
-- remove white space after user input.
+- early quit option (after each user input).
+- option to see entire list. 
+- dealing with already entered options (don't just say "wrong answer").

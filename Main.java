@@ -11,7 +11,7 @@ public class Main {
         System.out.println("1 : jlink flags");
         System.out.println("2 : jpackage flags");
         System.out.print("(enter # only): ");
-        String choiceList = scanner.nextLine();
+        String choiceList = scanner.nextLine().strip();
 
         TestListPrompt jlinkList = new TestListPrompt();
         JpackagePrompt jpList = new JpackagePrompt();
@@ -20,7 +20,7 @@ public class Main {
             HashSet<String> list = jlinkList.getAnswers();
             while (!list.isEmpty()) {
                 System.out.println(jlinkList.testPrompt);
-                String answer = scanner.nextLine();
+                String answer = scanner.nextLine().strip();
                 if (list.contains(answer)){
                     System.out.println("correct!");
                     System.out.println("");
@@ -36,7 +36,7 @@ public class Main {
             HashSet<String> list = jpList.getAnswers();
             while (!list.isEmpty()) {
                 System.out.println(jpList.JpackagePrompt);
-                String answer = scanner.nextLine();
+                String answer = scanner.nextLine().strip();
                 if (list.contains(answer)) {
                     System.out.println("correct!");
                     System.out.println("");
