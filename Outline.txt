@@ -1,0 +1,32 @@
+List input checker
+
+- Asks question/prompt in IDE terminal for user to
+type out all the items in a list. It's a better version 
+of multi-line flashcards in my current study app (RemNote) 
+since the syntax must be exact and all the answers aren't 
+just shown to you at once. The order doesn't matter. 
+
+- prompt <--> list of terms/syntax
+
+- will probably use a HashSet for the list of correct answer 
+choices (due to its fast .contains() method).
+
+Process Overview:
+> prompt given in IDE Terminal 
+> asks for user input
+> checks input & sees if list contains it
+    > says "correct!" and removes item from list if correct.
+    > says "wrong answer" if incorrect.
+> checks if list is empty after each input.
+    > says "next guess: " if it isn't. 
+    > says "congrats! you got em all" if list is empty.
+>ends program. 
+
+- add early quit option later (to not have to be stuck if
+you don't know all the answers). 
+
+- User can just select from selection of list prompt titles.
+- Whichever one they choose it'll read a string prompt from 
+prompt list object (custom object to hold prompt String and
+HashSet answers) and use a while loop to ask for user input
+and tell whether or not its on the reference list.  
