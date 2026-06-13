@@ -10,7 +10,7 @@ public class Main {
         System.out.println("what list would you like to practice today?");
         System.out.println("1 : jlink flags");
         System.out.println("2 : jpackage flags");
-        System.out.print("(enter # only): ");
+        System.out.print("(enter # only {+ L to see entire list -Ex. '1L'}): ");
         String choiceList = scanner.nextLine().strip();
 
         TestListPrompt jlinkList = new TestListPrompt();
@@ -50,6 +50,10 @@ public class Main {
                 System.out.println("next guess... ");
             }
             System.out.println("wait, seems like you gottem all. Good job!");
+        } else if (choiceList.equals("1L") || choiceList.equals("1l")) {
+            System.out.println(jlinkList.getAnswers());
+        } else if (choiceList.equals("2L") || choiceList.equals("2l")) {
+            System.out.println(jpList.getAnswers());
         } else {
             System.out.println("wrong input");
         }
