@@ -29,6 +29,7 @@ public class Main {
                     System.out.println("wrong answer");
                     System.out.println("");
                 }
+                earlyQuit(scanner);
                 System.out.println("next guess... ");
             }
             System.out.println("wait, seems like you gottem all. Good job!");
@@ -45,6 +46,7 @@ public class Main {
                     System.out.println("wrong answer");
                     System.out.println("");
                 }
+                earlyQuit(scanner);
                 System.out.println("next guess... ");
             }
             System.out.println("wait, seems like you gottem all. Good job!");
@@ -54,4 +56,16 @@ public class Main {
         scanner.close();
         System.out.println("Ending program");
     }   
+
+
+    public static void earlyQuit(Scanner scanner) {
+        System.out.print("continue? (y/n): ");
+        String input = scanner.nextLine();
+        if (input.equals("n") || input.equals("no")) {
+            System.out.println("Ending program");
+            scanner.close();
+            System.exit(0);
+        }
+    }
 }
+
