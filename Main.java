@@ -23,12 +23,14 @@ public class Main {
         } else if (choiceList.equals("2")) {
             currentList = listMethodClass.getParameterizedListJP();
             listCycle(currentList, scanner);
-        } else if (choiceList.equals("1L") || choiceList.equals("1l")) {
+        } else if (choiceList.toUpperCase().equals("1L")) {
             currentList = listMethodClass.getParameterizedListJL();
             System.out.println(currentList.getList());
-        } else if (choiceList.equals("2L") || choiceList.equals("2l")) {
+            System.out.println();
+        } else if (choiceList.toUpperCase().equals("2L")) {
             currentList = listMethodClass.getParameterizedListJP();
             System.out.println(currentList.getList());
+            System.out.println();
         } else {
             System.out.println("wrong input");
         }
@@ -70,12 +72,7 @@ public class Main {
     public static String itemsLeft(listMethodClass currentList) {
         int size = currentList.getList().size();
         String currentItemType = currentList.itemType;
-        String s;
-        if (size == 1) {
-            s = "";
-        } else {
-            s = "s";
-        }
+        String s = (size == 1) ? "" : "s";
         String itemsLeft = " " + size + " " + currentItemType + s + " left.";
         return itemsLeft;
     }
