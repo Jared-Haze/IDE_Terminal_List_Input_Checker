@@ -1,12 +1,13 @@
 import java.util.HashSet;
 
-public class JpackagePrompt {
-    public String JpackagePrompt = "What are the common flags you use in your default/most common jpackage command? : ";
+public class JpackageList {
+    public static String prompt = "What are the common flags you use in your default/most common jpackage command? : ";
+    public static String itemType = "flag";
 
     //answers list
-    private HashSet<String> answers = new HashSet<>();
+    private static HashSet<String> answers = new HashSet<>();
 
-    public HashSet<String> getAnswers() {
+    public static HashSet<String> getAnswers() {
         answers.add("--type");
         answers.add("--name");
         answers.add("--app-version");

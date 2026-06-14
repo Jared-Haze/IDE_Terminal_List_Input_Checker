@@ -13,47 +13,22 @@ public class Main {
         System.out.print("(enter # only {+ L to see entire list -Ex. '1L'}): ");
         String choiceList = scanner.nextLine().strip();
 
-        TestListPrompt jlinkList = new TestListPrompt();
-        JpackagePrompt jpList = new JpackagePrompt();
+        listMethodClass currentList;
+
+        System.out.println();
 
         if (choiceList.equals("1")) {
-            HashSet<String> list = jlinkList.getAnswers();
-            while (!list.isEmpty()) {
-                System.out.println(jlinkList.testPrompt);
-                String answer = scanner.nextLine().strip();
-                if (list.contains(answer)){
-                    System.out.println("correct!");
-                    System.out.println("");
-                    list.remove(answer);
-                } else {
-                    System.out.println("wrong answer");
-                    System.out.println("");
-                }
-                earlyQuit(scanner);
-                System.out.println("next guess... ");
-            }
-            System.out.println("wait, seems like you gottem all. Good job!");
+            currentList = listMethodClass.getParameterizedListJL();
+            listCycle(currentList, scanner);
         } else if (choiceList.equals("2")) {
-            HashSet<String> list = jpList.getAnswers();
-            while (!list.isEmpty()) {
-                System.out.println(jpList.JpackagePrompt);
-                String answer = scanner.nextLine().strip();
-                if (list.contains(answer)) {
-                    System.out.println("correct!");
-                    System.out.println("");
-                    list.remove(answer);
-                } else {
-                    System.out.println("wrong answer");
-                    System.out.println("");
-                }
-                earlyQuit(scanner);
-                System.out.println("next guess... ");
-            }
-            System.out.println("wait, seems like you gottem all. Good job!");
+            currentList = listMethodClass.getParameterizedListJP();
+            listCycle(currentList, scanner);
         } else if (choiceList.equals("1L") || choiceList.equals("1l")) {
-            System.out.println(jlinkList.getAnswers());
+            currentList = listMethodClass.getParameterizedListJL();
+            System.out.println(currentList.getList());
         } else if (choiceList.equals("2L") || choiceList.equals("2l")) {
-            System.out.println(jpList.getAnswers());
+            currentList = listMethodClass.getParameterizedListJP();
+            System.out.println(currentList.getList());
         } else {
             System.out.println("wrong input");
         }
@@ -70,6 +45,39 @@ public class Main {
             scanner.close();
             System.exit(0);
         }
+    }
+
+    public static void listCycle(listMethodClass currentList, Scanner scanner) {
+        while(!currentList.getList().isEmpty()) {
+            System.out.println(currentList.prompt);
+            String answer = scanner.nextLine().strip();
+            if (currentList.getList().contains(answer)){
+                currentList.getList().remove(answer);
+                System.out.println("correct!" + itemsLeft(currentList));
+                System.out.println("");
+            } else {
+                System.out.println("wrong answer," + itemsLeft(currentList));
+                System.out.println("");
+            }
+            if(currentList.getList().isEmpty()) {continue;}
+            earlyQuit(scanner);
+            System.out.println("next guess... ");
+        }
+        System.out.println("👌 seems like you gottem all. Good job!");
+    }
+    
+
+    public static String itemsLeft(listMethodClass currentList) {
+        int size = currentList.getList().size();
+        String currentItemType = currentList.itemType;
+        String s;
+        if (size == 1) {
+            s = "";
+        } else {
+            s = "s";
+        }
+        String itemsLeft = " " + size + " " + currentItemType + s + " left.";
+        return itemsLeft;
     }
 }
 
