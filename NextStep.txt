@@ -1,7 +1,7 @@
 Next step:
-- dealing with already entered options (don't just say "wrong answer").
 - add feature to view what's left of list during practice (quits list
 early and shows what terms left you've got, to see what you struggle 
 with).
-- make list object type where the syntax doesn't have to perfect match
-(multiple accepted answer variations probably using a HashSet of HashSets).
+
+Final Step:
+- End. Continued in CLI study cat program. (merged) 
