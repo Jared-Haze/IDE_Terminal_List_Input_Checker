@@ -50,15 +50,14 @@ public class Main {
     }
 
     public static void listCycle(listMethodClass currentList, Scanner scanner) {
+        HashSet<String> answeredList = new HashSet<>();
         while(!currentList.getList().isEmpty()) {
-            HashSet<String> answeredList = new HashSet<>();
             System.out.println(currentList.prompt);
             String answer = scanner.nextLine().strip();
             if (currentList.getList().contains(answer)){
                 currentList.getList().remove(answer);
                 answeredList.add(answer);
                 System.out.println("correct!" + itemsLeft(currentList));
-                System.out.println("");
             } else if (answeredList.contains(answer)) {
                 System.out.println("you already got that one." + itemsLeft(currentList) + "\n");
             } else {
@@ -69,7 +68,7 @@ public class Main {
             earlyQuit(scanner);
             System.out.println("next guess... ");
         }
-        System.out.println("👌 seems like you gottem all. Good job!");
+        System.out.println("👌 seems like you gottem all. Good job!🥳");
     }
     
 
