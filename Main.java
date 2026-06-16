@@ -1,5 +1,6 @@
 import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
@@ -39,13 +40,24 @@ public class Main {
     }   
 
 
-    public static void earlyQuit(Scanner scanner) {
-        System.out.print("continue? (y/n): ");
+    public static void earlyQuit(HashSet<String> answeredList, listMethodClass currentList ,Scanner scanner) {
+        System.out.print("continue: (y/enter/etc.)\nquit: (q)\nsee answered items: (i)\nsee unanswered items(ends practice early): (L)\n");
         String input = scanner.nextLine();
-        if (input.equals("n") || input.equals("no")) {
+        if (input.equals("q")) {
             System.out.println("Ending program");
             scanner.close();
             System.exit(0);
+        } else if (input.equals("i")) {
+            System.out.println("showing answered items: ");
+            System.out.println(answeredList + "\n");
+        } else if (Set.of("l", "L").contains(input)) {
+            System.out.println("seems like you struggle with these terms: \n" + currentList.getList());
+            System.out.println("better keep practicing");
+            System.out.println("Ending program");
+            scanner.close();
+            System.exit(0);
+        } else {
+            System.out.println();
         }
     }
 
@@ -57,7 +69,7 @@ public class Main {
             if (currentList.getList().contains(answer)){
                 currentList.getList().remove(answer);
                 answeredList.add(answer);
-                System.out.println("correct!" + itemsLeft(currentList));
+                System.out.println("correct!" + itemsLeft(currentList) + "\n");
             } else if (answeredList.contains(answer)) {
                 System.out.println("you already got that one." + itemsLeft(currentList) + "\n");
             } else {
@@ -65,7 +77,7 @@ public class Main {
                 System.out.println("");
             }
             if(currentList.getList().isEmpty()) {continue;}
-            earlyQuit(scanner);
+            earlyQuit(answeredList, currentList, scanner);
             System.out.println("next guess... ");
         }
         System.out.println("👌 seems like you gottem all. Good job!🥳");
