@@ -1,7 +1,2 @@
-Next step:
-- add feature to view what's left of list during practice (quits list
-early and shows what terms left you've got, to see what you struggle 
-with).
-
 Final Step:
 - End. Continued in CLI study cat program. (merged) 
